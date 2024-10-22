@@ -1,6 +1,6 @@
 
 function productExceptSelf(nums: number[]): number[] {
-    const result : number[] = [];
+    const result:number[] = [];
     const leftToRight:number[] = [];
     const rightToLeft:number[] = [];
     let mult = 1;

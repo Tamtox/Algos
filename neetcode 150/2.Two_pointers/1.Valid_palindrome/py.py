@@ -1,6 +1,4 @@
-# https://leetcode.com/problems/valid-palindrome/
 from math import ceil
-
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:

@@ -1,4 +1,4 @@
-// Hashing - used to map data into hash table for faster access
+// Hashing - used to store data in such a way that it can be retrieved very quickly.
 
 export const twoSum = (nums: number[], target: number): number[] => {
   const map = new Map();

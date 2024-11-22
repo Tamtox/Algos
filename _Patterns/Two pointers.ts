@@ -1,5 +1,5 @@
-// Two pointers - 
-
+// Two pointers - is a pattern where you traverse an array using two pointers. Usually left and right pointers.
+// The pattern is useful when you need to compare elements in an array, or when you need to find a subarray that satisfies a condition.
 
 export const isPalindrome = (s: string): boolean => {
   let left = 0;
@@ -17,4 +17,4 @@ export const isPalindrome = (s: string): boolean => {
     }
   }
   return true;
-}
+};

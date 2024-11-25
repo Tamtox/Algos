@@ -1,18 +1,15 @@
 function maxProfit(prices: number[]): number {
   if (prices.length < 2) return 0;
   let max = 0;
-  let left = 0;
-  let right = 1;
-  while (right < prices.length) {
-    const buy = prices[left];
-    const sell = prices[right];
-    if (buy < sell) {
-      const profit = sell - buy;
-      max = Math.max(max, profit);
+  let buy = 0;
+  let sell = 1;
+  while (sell < prices.length) {
+    if (prices[sell] > prices[buy]) {
+      max = Math.max(max, prices[sell] - prices[buy]);
     } else {
-      left = right;
+      buy = sell;
     }
-    right++;
+    sell++;
   }
   return max;
 }

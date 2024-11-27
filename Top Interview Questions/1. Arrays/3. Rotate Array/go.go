@@ -6,7 +6,7 @@
 			}
 			numsCopy:=make([]int, numsLen);
 			for i:=0;i<numsLen;i++{
-				numsCopy=append(numsCopy, nums[i])
+				numsCopy[i] = nums[i]
 			}
 			for i:=0;i<numsLen;i++ {
 				newIndex:= i + offset;

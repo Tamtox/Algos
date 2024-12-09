@@ -1,18 +1,20 @@
 function makeFancyString(s: string): string {
-  let result = '';
-  let i = 0;
-  while(i < s.length) {
-    const char = s[i];
-    if(i < s.length - 2) {
-      let j = i + 1;
-      while(j < s.length) {
-        if(s[j] !== char) break;
-        j++;
+  let result = "";
+  let left = 0;
+  let right = 1;
+  while (left < s.length) {
+    const leftChar = s[left];
+    const rightChar = s[right];
+    if (leftChar !== rightChar) {
+      const diff = right - left;
+      if (diff >= 2) {
+        result += `${leftChar}${leftChar}`;
+      } else {
+        result += leftChar;
       }
-    } else {
-      result+= char;
+      left = right;
     }
-    i++;
+    right++;
   }
   return result;
-};
+}

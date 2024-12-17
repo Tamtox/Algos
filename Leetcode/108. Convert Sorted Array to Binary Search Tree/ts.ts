@@ -15,6 +15,5 @@ function sortedArrayToBST(nums: number[]): TreeNode | null {
   let left: TreeNode | null = null;
   let right: TreeNode | null = null;
   let leftIndex = mid;
-  let;
   return head;
 }

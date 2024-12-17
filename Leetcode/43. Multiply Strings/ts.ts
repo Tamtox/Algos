@@ -12,7 +12,6 @@ const numsMap = {
 };
 
 function multiply(num1: string, num2: string): string {
-  let result = "";
   const nums: number[] = [];
   for (let i = 0; i < num1.length; i++) {
     const n1 = numsMap[num1[num1.length - 1 - i]];
@@ -35,5 +34,11 @@ function multiply(num1: string, num2: string): string {
     }
     nums.push(res);
   }
-  return result;
+  let result = 0;
+  let mult = 1;
+  for (let num of nums) {
+    result = result === 0 ? num : num * mult + result;
+    mult *= 10;
+  }
+  return result + "";
 }

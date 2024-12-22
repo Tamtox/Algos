@@ -9,10 +9,10 @@ class TreeNode {
   }
 }
 
-function sortedArrayToBST(nums: number[]): TreeNode | null {
-  const mid = Math.floor(nums.length / 2);
-  const head = new TreeNode(nums[mid]);
-  let left = mid - 1;
-  let right = mid + 1;
-  return head;
+function inorderTraversal(root: TreeNode | null): number[] {
+  if (!root) return [];
+  return inorderTraversal(root.left).concat(
+    root.val,
+    inorderTraversal(root.right)
+  );
 }

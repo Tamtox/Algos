@@ -1,25 +1,31 @@
-function minDepthSearch(node: TreeNode | null, count: number) {
-  if (!node) {
-    return count;
+function dfs(node: TreeNode, num: number) {
+  num++;
+  if (node.left === null && node.right === null) {
+    return num;
   }
-  count++;
-  return Math.max(
-    minDepthSearch(node.left, count),
-    minDepthSearch(node.right, count)
-  );
+  if (node.left === null) {
+    return dfs(node.right, num);
+  }
+  if (node.right === null) {
+    return dfs(node.left, num);
+  }
+  return Math.min(dfs(node.left, num), dfs(node.right, num));
 }
 
 function minDepth(root: TreeNode | null): number {
   if (!root) {
     return 0;
   }
-  const left = minDepthSearch(root.left, 1);
-  const right = minDepthSearch(root.right, 1);
-  if (left === 1) {
-    return right;
+  if (!root.left && !root.right) {
+    return 1;
   }
-  if (right === 1) {
-    return left;
+  if (root.left === null) {
+    return dfs(root.right, 1);
   }
+  if (root.right === null) {
+    return dfs(root.left, 1);
+  }
+  const left = dfs(root.left, 1);
+  const right = dfs(root.right, 1);
   return Math.min(left, right);
 }

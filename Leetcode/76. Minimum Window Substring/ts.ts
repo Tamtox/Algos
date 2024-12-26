@@ -1,32 +1,43 @@
-function compareMaps(
-  required: Map<string, number>,
-  str: Map<string, number>
-): boolean {
-  for (let [key, value] of required) {
-    if (str.get(key) !== value) return false;
-  }
-  return true;
-}
-
 function minWindow(s: string, t: string): string {
-  if (t.length > s.length) return "";
-  if (t.length === 1) return s.includes(t) ? t : "";
+  if (t.length > s.length) {
+    return "";
+  }
+  const sMap = new Map<string, number[]>();
+  const tCount = new Map<string, number>();
+  for (let i = 0; i < s.length; i++) {
+    const item = sMap.get(s[i]);
+    sMap.set(s[i], item ? [...item, i] : [i]);
+  }
+  for (const char of t) {
+    const count = tCount.get(char);
+    tCount.set(char, count ? count + 1 : 1);
+  }
+  for (const item of tCount) {
+    const sItem = sMap.get(item[0]);
+    if (!sItem) {
+      return "";
+    }
+    if (sItem.length < item[1]) {
+      return "";
+    }
+  }
   let left = 0;
-  let right = t.length - 1;
-  const lettersRequired = new Map<string, number>();
-  for (let char of t) {
-    lettersRequired.set(char, (lettersRequired.get(char) || 0) + 1);
+  let moveLeft = true;
+  let right = s.length - 1;
+  let moveRight = true;
+  while (moveLeft || moveRight) {
+    if (moveLeft) {
+      const sItemLeft = sMap.get(s[left]);
+      const tItemLeft = tCount.get(s[left]);
+      if (sItemLeft && tItemLeft) {
+      }
+    }
+    if (moveRight) {
+      const sItemRight = sMap.get(s[right]);
+      const tItemRight = tCount.get(s[right]);
+      if (sItemRight && tItemRight) {
+      }
+    }
   }
-  const validStrings = new Set<string>();
-  let str = s.slice(0, t.length);
-  const strLetterCount = new Map<string, number>();
-  for (let char of str) {
-    strLetterCount.set(char, (strLetterCount.get(char) || 0) + 1);
-  }
-  let strValid = compareMaps(lettersRequired, strLetterCount);
-  if (strValid) validStrings.add(str);
-  while (right < s.length && left < s.length - t.length) {
-    const charRight = s[right];
-  }
-  return "";
+  return s.slice(left, right + 1);
 }

@@ -4,14 +4,17 @@ function findMin(nums: number[]): number {
   let min = nums[0];
   while (left <= right) {
     const mid = Math.floor((left + right) / 2);
+    if (nums[mid + 1] >= nums[mid] && nums[mid - 1] > nums[mid]) {
+      return nums[mid];
+    }
     if (nums[right] <= nums[left]) {
-      if (nums[mid] > nums[left]) {
+      if (nums[mid] >= nums[left]) {
         if (nums[mid + 1] < nums[mid]) {
           return nums[mid + 1];
         }
         left = mid + 1;
       } else {
-        if (nums[mid - 1] > nums[mid]) {
+        if (mid === 0) {
           return nums[mid];
         }
         right = mid - 1;

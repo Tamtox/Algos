@@ -12,4 +12,23 @@
  * }
  */
 
-function diameterOfBinaryTree(root: TreeNode | null): number {}
+function findMaxDepth(node: TreeNode | null, num: number) {
+  if (!node) {
+    return num;
+  }
+  num++;
+  return Math.max(findMaxDepth(node.left, num), findMaxDepth(node.right, num));
+}
+
+function diameterOfBinaryTree(root: TreeNode | null): number {
+  if (!root) {
+    return 0;
+  }
+  const left = findMaxDepth(root.left, 0);
+  const right = findMaxDepth(root.right, 0);
+  return Math.max(
+    left + right,
+    diameterOfBinaryTree(root.left),
+    diameterOfBinaryTree(root.right)
+  );
+}

@@ -9,24 +9,11 @@ class TreeNode {
   }
 }
 
-const traverse = (node: TreeNode, arr: number[]) => {
-  arr.push(node.val);
-  if (!node?.left && !node?.right) {
-    return;
-  }
-  if (node.left) {
-    traverse(node.left, arr);
-  }
-  if (node.right) {
-    traverse(node.right, arr);
-  }
-};
-
 function preorderTraversal(root: TreeNode | null): number[] {
   if (!root) {
     return [];
   }
-  const arr = [];
-  traverse(root, arr);
-  return arr;
+  const left = preorderTraversal(root.left);
+  const right = preorderTraversal(root.right);
+  return [root.val].concat(left, right);
 }

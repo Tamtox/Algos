@@ -11,8 +11,7 @@ class TreeNode {
 
 function inorderTraversal(root: TreeNode | null): number[] {
   if (!root) return [];
-  return inorderTraversal(root.left).concat(
-    root.val,
-    inorderTraversal(root.right)
-  );
+  const left = inorderTraversal(root.left);
+  const right = inorderTraversal(root.right);
+  return left.concat(root.val, right);
 }

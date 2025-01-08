@@ -7,6 +7,17 @@ There are 3 types of design patterns:
 
 
 ### Creational Design Patterns
-- Singleton Pattern - Ensures that a class has only one instance and provides a global point of access to it.
-- Factory Method Pattern - Defines an interface for creating objects, but lets subclasses to alter the type of objects that will be created.
-- Abstract Factory Pattern - Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+1. Factory Pattern - separates construction of a complex object from its representation, allowing the same construction process to create various representations. 
+2. Abstract Factory Pattern - provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+3. Singleton Pattern - ensures that a class has only one instance and provides a global point of access to it.
+4. Prototype Pattern - creates new objects by copying an existing object, known as the prototype.
+5. Builder Pattern - constructs a complex object step by step, allowing the construction process to vary independently from the object being constructed.
+
+### Structural Design Patterns
+1. Adapter Pattern - used to bridge the gap between two incompatible interfaces.
+2. Bridge Pattern - decouples an abstraction from its implementation so that the two can vary independently.
+3. Composite Pattern - composes objects into tree structures to represent part-whole hierarchies.
+4. Decorator Pattern - adds new functionality to an existing object without altering its structure.
+5. Facade Pattern - provides a simplified interface to a complex system.
+
+### Behavioral Design Patterns

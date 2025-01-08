@@ -20,6 +20,7 @@
 - Dynamic modules - are used to create modules dynamically. They are used when the module configuration is dynamic or unknown at compile time.
   - Use @Module() decorator with a factory function that returns a module configuration object.
   - Use the register() method of the ModuleRef class to register
+  ```ts
   @Module({})
   export class ConfigModule {
     static register(options: ConfigOptions): DynamicModule {
@@ -39,6 +40,7 @@
     imports: [ConfigModule.register({ env: 'production' })],
   })
   export class AppModule {}
+  ```
 - Module re-exporting - is used to re-export providers from other modules.
   @Module({
     imports: [UserModule],
@@ -55,6 +57,7 @@
         useFactory: (configService: ConfigService) => configService.apiKey,
       },
     ],
+    exports: [`API_KEY`],
   })
   export class AppModule {}
 ```

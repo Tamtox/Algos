@@ -1,0 +1,2 @@
+- env variable are stored on volumes and are persistent for the containers. Don't forget to completely prune the volumes if you want to remove the env variables.
+- Docker host is 0.0.0.0 . Don't forget to change it from localhost to 0.0.0.0

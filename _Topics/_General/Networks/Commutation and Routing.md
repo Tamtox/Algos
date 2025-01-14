@@ -1,0 +1,2 @@
+- Commutation - is a process of establishing and managing connections between two nodes in a network. It works on the basis of the OSI model, on data link layer. The process of commutation is divided into two types: circuit switching and packet switching.
+- Routing - is a process of selecting the best path for the data packets to travel from source to destination. It works on the basis of the OSI model, on network layer. The process of routing is divided into two types: static routing and dynamic routing.

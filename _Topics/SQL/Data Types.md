@@ -10,3 +10,6 @@
   - `TINYINT`, `SMALLINT`, `MEDIUMINT`, `INT`, `BIGINT` are integer types.
   - `FLOAT`, `DOUBLE` are floating-point types.
   - `DECIMAL` is a fixed-point type.
+  - `NUMERIC` is a synonym for `DECIMAL`.
+  - `SERIAL` is an alias for 'BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE'.
+### Date and Time Types

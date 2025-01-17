@@ -1,22 +1,16 @@
 - @Module() decorator provides metadata that Nest.js uses to organize the application structure.
 - @Module({
-    imports: [], // Import other modules here
+    imports: [],                   // Import other modules here
     controllers: [UserController], // Declare controllers
-    providers: [UserService], // Declare providers (services, custom factories, etc.)
-    exports: [UserService], // Export providers to make them available in other modules
+    providers: [UserService],      // Declare providers (services, custom factories, etc.)
+    exports: [UserService],        // Export providers to make them available in other modules
   })
 - Types of modules:
   - Feature modules - are used to organize code. They are used to encapsulate a specific feature or domain of the application.
   - Root modules - is the entry point of the application. Each application has at least one root module.
   - Global modules - modules that are available application-wide. They are used to provide common services, utilities, etc.
     Use @Global() decorator to make a module global.
-  - Shared modules - modules that export providers that are used by other modules.
-    // user.module.ts
-    @Module({
-      providers: [UserService],
-      exports: [UserService],
-    })
-    export class UserModule {}
+  - Shared modules - modules that export providers that are used by other modules, and do not implement their own controllers.
 - Dynamic modules - are used to create modules dynamically. They are used when the module configuration is dynamic or unknown at compile time.
   - Use @Module() decorator with a factory function that returns a module configuration object.
   - Use the register() method of the ModuleRef class to register

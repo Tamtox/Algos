@@ -1,4 +1,4 @@
-function findStart(nums) {
+function findStart(nums: number[]) {
   if (nums.length < 1) {
     return -1;
   }
@@ -18,14 +18,12 @@ function findStart(nums) {
     if (nums[mid - 1] > nums[mid]) {
       return mid;
     }
-    // Handle duplicates: if left, mid, and right elements are same, we need to check both halves
+    // Check if left mid and right are same
     if (nums[left] === nums[mid] && nums[mid] === nums[right]) {
-      // Check if left is the pivot
       if (nums[left] > nums[left + 1]) {
         return left + 1;
       }
       left++;
-      // Check if right is the pivot
       if (nums[right - 1] > nums[right]) {
         return right;
       }
@@ -33,7 +31,6 @@ function findStart(nums) {
       continue;
     }
     // If we can't determine which side to go, we need to check both sides
-    // Decide which half to search
     if (
       nums[left] < nums[mid] ||
       (nums[left] === nums[mid] && nums[mid] > nums[right])

@@ -21,6 +21,5 @@ public class java {
     dict.put(1, 2);
     dict.put(2, 3);
     dict.put(3, 4);
-
   }
 }

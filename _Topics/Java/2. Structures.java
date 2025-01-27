@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class java {
+public class Structures {
   public static void examples() {
     // ArrayList ------------------------------------
     ArrayList<Integer> list1 = new ArrayList<>();

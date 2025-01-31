@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
+	// Constant
+	const s string = "asd"
 	// Hashmap
 	hashMap := make(map[string]string)
 	hashMap["name"] = "John"

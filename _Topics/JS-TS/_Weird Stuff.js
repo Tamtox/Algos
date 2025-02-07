@@ -21,3 +21,5 @@ for (let i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 100);
 }
 // Prints: 0, 1, 2
+
+// Modules are exported/imported as read-only ----------------------------------------------------------------------

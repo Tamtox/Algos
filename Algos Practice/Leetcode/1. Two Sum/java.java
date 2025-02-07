@@ -5,7 +5,7 @@ class Solution {
         int [] res = {-1, -1};
         HashMap<Integer, Integer> dict = new HashMap<Integer , Integer>();
         for(int i = 0; i < nums.length; i++) {
-          var item = dict.get(target - nums[i]);
+          Integer item = dict.get(target - nums[i]);
           if(item != null) {
             res[0] = i;
             res[1] = item;
@@ -17,3 +17,4 @@ class Solution {
         return res;
     }
 }
+

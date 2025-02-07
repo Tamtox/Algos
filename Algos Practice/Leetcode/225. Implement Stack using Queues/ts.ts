@@ -1,24 +1,51 @@
+class ListNode {
+  constructor(public next: ListNode | null, public val: number) {
+    this.next = next;
+    this.val = val;
+  }
+}
+
 class MyStack {
-  stack: number[] = [];
+  head?: ListNode;
+  count: number;
   constructor() {
-    this.stack = [];
+    this.head = undefined;
+    this.count = 0;
   }
 
   push(x: number): void {
-    this.stack.push(x);
+    const newNode = new ListNode(null, x);
+    if (this.head) {
+      newNode.next = this.head;
+    }
+    this.head = newNode;
+    this.count += 1;
   }
 
   pop(): number {
-    const elem = this.stack.pop();
-    return elem || -1;
+    if (this.head) {
+      let num = this.head.val;
+      if (this.count === 1) {
+        this.head = undefined;
+        this.count = 0;
+      } else {
+        if (this.head.next !== null) {
+          this.head = this.head.next;
+          this.count -= 1;
+        }
+      }
+      return num;
+    } else {
+      return -1;
+    }
   }
 
   top(): number {
-    return this.stack[this.stack.length - 1];
+    return this.head ? this.head.val : -1;
   }
 
   empty(): boolean {
-    return this.stack.length === 0 ? true : false;
+    return this.count === 0;
   }
 }
 

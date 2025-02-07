@@ -1,0 +1,8 @@
+- Function vs Arrow Function differences
+  - This keyword : Arrow function does not have its own this. The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non-arrow parent function.
+  - Arguments object : Arrow functions do not have their own arguments object.
+  - New keyword : Arrow functions cannot be used as constructors and will throw an error when used with new.
+  - Prototype : Arrow functions do not have a prototype property.
+  - Super : Arrow functions do not have their own super method.
+  - Implicit return : Arrow functions implicitly return the value of the expression without using the return keyword.
+  - Yield : Arrow functions cannot be used as generators and will throw an error when used with yield.

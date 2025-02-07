@@ -9,22 +9,11 @@ class TreeNode {
   }
 }
 
-function maxDepth(node: TreeNode | null, depth: number) {
+function determineDepth(node: TreeNode | null, count: number) {
   if (!node) {
-    return depth;
+    return count;
   }
-  depth++;
-  return Math.max(maxDepth(node.left, depth), maxDepth(node.right, depth));
+  count++;
 }
 
-function isBalanced(root: TreeNode | null): boolean {
-  if (!root) {
-    return true;
-  }
-  const leftDepth = maxDepth(root.left, 0);
-  const rightDepth = maxDepth(root.right, 0);
-  if (Math.abs(leftDepth - rightDepth) > 1) {
-    return false;
-  }
-  return isBalanced(root.left) && isBalanced(root.right);
-}
+function isBalanced(root: TreeNode | null): boolean {}

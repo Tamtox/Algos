@@ -1,29 +1,55 @@
+function includesAll(
+  map1: { [key: string]: number },
+  map2: { [key: string]: number }
+) {
+  for (const key in map2) {
+    if (map1[key] === undefined || map1[key] < map2[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 function minWindow(s: string, t: string): string {
   if (t.length > s.length) {
     return "";
   }
-  const sMap = new Map<string, number>();
-  const tCount = new Map<string, number>();
-  for (const char of s) {
-    const item = sMap.get(char);
-    sMap.set(char, item ? item + 1 : 1);
-  }
+  const tMap: { [key: string]: number } = {};
   for (const char of t) {
-    const count = tCount.get(char);
-    tCount.set(char, count ? count + 1 : 1);
+    tMap[char] = (tMap[char] || 0) + 1;
   }
-  for (const item of tCount) {
-    const sItem = sMap.get(item[0]);
-    if (!sItem) {
-      return "";
-    }
-    if (sItem < item[1]) {
-      return "";
-    }
+  const sMap: { [key: string]: number } = {};
+  for (let i = 0; i < t.length; i++) {
+    sMap[s[i]] = (sMap[s[i]] || 0) + 1;
   }
+  let min = s + "a";
   let left = 0;
-  let moveLeft = true;
-  let right = s.length - 1;
-  let moveRight = true;
-  return s.slice(left, right + 1);
+  let right = t.length;
+  if (includesAll(sMap, tMap)) {
+    min = s.slice(left, right);
+  }
+  while (left < s.length) {
+    const isValid = includesAll(sMap, tMap);
+    if (isValid) {
+      if (right - left + 1 < min.length) {
+        min = s.slice(left, right);
+      }
+      if (sMap[s[left]] === 1) {
+        delete sMap[s[left]];
+      } else {
+        sMap[s[left]] = sMap[s[left]] - 1;
+      }
+      left++;
+      if (right - left + 1 < t.length) {
+        break;
+      }
+    } else {
+      if (right === s.length) {
+        break;
+      }
+      sMap[s[right]] = (sMap[s[right]] || 0) + 1;
+      right++;
+    }
+  }
+  return min === s + "a" ? "" : min;
 }

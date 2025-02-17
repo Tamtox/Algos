@@ -1,0 +1,10 @@
+- go run file.go # Run a go file
+- go build file.go # Build a go file
+- go install file.go # Install a go file
+- go get github.com/username/repo # Get a go package
+- go mod init github.com/username/repo # Initialize a go module
+- go mod tidy # Clean up go.mod and go.sum
+- go mod vendor # Create a vendor directory
+- go mod download # Download modules to local cache
+- go mod verify # Verify dependencies have expected content
+- go doc fmt Println # Show documentation for fmt.Println

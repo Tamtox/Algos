@@ -29,4 +29,21 @@ export class CatsController {
     return this.catsService.create(createCatDto);
   }
 }
+// Providers
+@Injectable()
+class CatsService {
+  constructor(
+    private readonly catsRepository: CatsRepository, // Normal class
+    @Inject(forwardRef(() => AppService)) private readonly appService: AppService, // Circular dependency
+    @Inject('HTTP_OPTIONS') private readonly httpClient: HttpClient, // Custom provider
+  ) {}
+  private readonly cats: Cat[] = [];
+  create(cat: CreateCatDto): Cat {
+    this.cats.push(cat);
+    return cat;
+  }
+  findAll(): Cat[] {
+    return this.cats;
+  }
+}
 ```

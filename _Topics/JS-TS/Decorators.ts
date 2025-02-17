@@ -18,3 +18,7 @@ class DecoratorExample {
     return a + b;
   }
 }
+
+const prom = new Promise((resolve, reject) => {
+  resolve(1);
+});

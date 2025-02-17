@@ -1,76 +1,25 @@
-function findDeletionIndex(nums: number[], num: number) {
-  if (num <= nums[0]) {
-    return 0;
-  }
-  if (num >= nums[nums.length - 1]) {
-    return nums.length - 1;
-  }
-  let left = 0;
-  let right = nums.length - 1;
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    if (num === nums[mid]) {
-      return mid;
-    } else if (nums[mid] > num) {
-      right = mid - 1;
-    } else {
-      left = mid + 1;
-    }
-  }
-  return -1;
-}
-
-function findInsertionIndex(nums: number[], num: number) {
-  if (num <= nums[0]) {
-    return 0;
-  }
-  if (num >= nums[nums.length - 1]) {
-    return nums.length;
-  }
-  let left = 0;
-  let right = nums.length - 1;
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
-    if (num === nums[mid]) {
-      return mid;
-    } else if (nums[mid] > num) {
-      if (nums[mid - 1] < num) {
-        return mid;
-      }
-      right = mid - 1;
-    } else {
-      if (nums[mid + 1] > num) {
-        return mid + 1;
-      }
-      left = mid + 1;
-    }
-  }
-  return -1;
-}
-
 function maxSlidingWindow(nums: number[], k: number): number[] {
-  if (
-    nums.length === 4 &&
-    nums[0] === 9 &&
-    nums[nums.length - 1] === 8 &&
-    k === 3
-  ) {
-    return [9, 9];
-  }
   const result: number[] = [];
-  const subarray = nums.slice(0, k).sort((x, y) => x - y);
-  if (nums.length <= k) {
-    return [subarray[subarray.length - 1]];
+  const deQueue: number[] = []; // Store indices, not actual elements
+
+  for (let i = 0; i < nums.length; i++) {
+    // Remove elements that are out of the current window
+    while (deQueue.length > 0 && deQueue[0] < i - k + 1) {
+      deQueue.shift();
+    }
+
+    // Remove elements that are smaller than the current element
+    while (deQueue.length > 0 && nums[deQueue[deQueue.length - 1]] < nums[i]) {
+      deQueue.pop();
+    }
+
+    deQueue.push(i); // Add the current element's index to the deQueue
+
+    // If the left end of the window is inside the array, add maximum to the result
+    if (i >= k - 1) {
+      result.push(nums[deQueue[0]]);
+    }
   }
-  let left = 0;
-  let right = k;
-  result.push(subarray[subarray.length - 1]);
-  while (right < nums.length) {
-    subarray.splice(findDeletionIndex(subarray, nums[left]), 1);
-    subarray.splice(findInsertionIndex(subarray, nums[right]), 0, nums[right]);
-    result.push(subarray[subarray.length - 1]);
-    left++;
-    right++;
-  }
+
   return result;
 }
